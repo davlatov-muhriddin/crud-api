@@ -10,6 +10,15 @@ app.use(express.json());
 
 app.use("/api/products", productsRouter);
 
+app.get("/", (req, res) => {
+  res.send(`
+    get: /api/products
+    post: /api/products/create
+    put: /api/products//update/:id
+    delete: /remove/:id
+  `);
+});
+
 mongoose.set("strictQuery", false);
 mongoose
   .connect(process.env.MONGO_URL, {
